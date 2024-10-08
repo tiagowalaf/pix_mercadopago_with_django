@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        img{
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+    {% for i in obj %}
+        <form action="{% url 'transaction' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id_prd" value="{{i.id}}">
+            <p>NOME: {{i.nome}}</p>
+            <p>PREÇO: {{i.preco}}</p>
+            <button type="submit">enviar</button>
+        </form>
+    {% endfor %}
+
+    {% block content %}{% endblock content %}
+</body>
+</html>
+
+{% comment %} O id do produto pode estar dentro de um input type hidden, <br>mas isso não impede alguém de 
+mudar seu ID, por isso sempre verifique em <br>seu backend se o produto existe.
+
+O ID do produto deve ser enviado para outra url, em <br>vez de criar um formulário somente para isso
+usaremos o input comum do html. {% endcomment %}

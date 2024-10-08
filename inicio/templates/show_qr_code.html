@@ -1,0 +1,9 @@
+{% extends "inicio.html" %}
+
+{% block content %}
+    <img src= "data:image/jpeg;base64,{{ payment_read }}">
+    <p>{{payment}}</p>
+{% endblock content %}
+
+{% comment %} Esta parte em img ("data:image/jpeg;base64,) refere-se a regra do mercado pago
+de exibir o qr_code {% endcomment %}
